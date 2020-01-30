@@ -64,11 +64,16 @@ install_helm () {
     local arch=$(get_arch)
     local tempdir=$(my_mktemp $platform)
 		local download_url=$(get_download_url $version $platform)
+		
+		local bin_install_path="$install_path/bin"
+		local bin_path="$bin_install_path/skaffold"
 
+		mkdir -p $bin_install_path
     curl -sSL $download_url -o "${tempdir}/archive.tar.gz"
-    tar -C "$install_path" -xzf "${tempdir}/archive.tar.gz"
-    rm -rf "${tempdir}"
-		ls "${install_path}"
+    tar -C "$tempdir" -xzf "${tempdir}/archive.tar.gz"
+		mv "${tempdir}/${platform}-amd64/helm" $
+    rm -rf $tempdir $bin_install_path
+		ls $bin_install_path
 }
 
 install_helm $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
