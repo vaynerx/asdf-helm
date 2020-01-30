@@ -43,7 +43,7 @@ get_arch () {
 get_download_url() {
   local version="$1"
   local platform="$2"
-  echo "https://get.helm.sh/helm-v${version}-${platform}.tar.gz"
+  echo "https://get.helm.sh/helm-v${version}-${platform}-amd64.tar.gz"
 }
 
 my_mktemp () {
