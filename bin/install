@@ -70,10 +70,14 @@ install_helm () {
 	mkdir -p $bin_install_path
 	curl -sSL $download_url -o "${tempdir}/archive.tar.gz"
 	tar -C "$tempdir" -xzf "${tempdir}/archive.tar.gz"
-	# Add 3.0.0 conditional to account for no tiller presence
-	ls "${tempdir}/${platform}-amd64"
+
+	if [ -f "${tempdir}/${platform}-amd64/tiller"]; then
+		mv "${tempdir}/${platform}-amd64/tiller" "${bin_install_path}/tiller"
+		chmod +x "${bin_install_path}/tiller"
+	fi
+
 	mv "${tempdir}/${platform}-amd64/helm" "${bin_install_path}/helm"
-	mv "${tempdir}/${platform}-amd64/tiller" "${bin_install_path}/tiller"
+	chmod +x "${bin_install_path}/helm"
 
 	rm -rf $tempdir 
 }
