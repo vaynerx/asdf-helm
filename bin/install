@@ -68,7 +68,7 @@ install_helm () {
     curl -sSL $download_url -o "${tempdir}/archive.tar.gz"
     tar -C "$install_path" -xzf "${tempdir}/archive.tar.gz"
     rm -rf "${tempdir}"
-		chmod -R +x "${install_path}/bin"
+		ls "${install_path}"
 }
 
 install_helm $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
