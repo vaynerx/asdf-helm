@@ -71,7 +71,7 @@ install_helm () {
 	curl -sSL $download_url -o "${tempdir}/archive.tar.gz"
 	tar -C "$tempdir" -zxf "${tempdir}/archive.tar.gz"
 
-	if [ -f "${tempdir}/${platform}/tiller"]; then
+	if [ -f "${tempdir}/${platform}/tiller" ]; then
 		mv ${tempdir}/${platform}/tiller ${bin_install_path}/tiller
 		chmod +x "${bin_install_path}/tiller"
 	fi
