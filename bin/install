@@ -72,13 +72,12 @@ install_helm () {
 	tar -C "$tempdir" -zxf "${tempdir}/archive.tar.gz"
 
 	if [ -f "${tempdir}/${platform}/tiller"]; then
-		mv "${tempdir}/${platform}/tiller" "${bin_install_path}/tiller"
+		mv ${tempdir}/${platform}/tiller ${bin_install_path}/tiller
 		chmod +x "${bin_install_path}/tiller"
 	fi
 
-	mv "${tempdir}/${platform}/helm" "${bin_install_path}/helm"
-	ls -la $bin_install_path
-	chmod +x "${bin_install_path}/helm"
+	mv ${tempdir}/${platform}/helm ${bin_install_path}/helm
+	chmod +x ${bin_install_path}/helm
 
 	rm -rf $tempdir 
 }
