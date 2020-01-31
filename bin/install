@@ -43,7 +43,7 @@ get_arch () {
 get_download_url() {
   local version="$1"
   local platform="$2"
-  echo "https://get.helm.sh/helm-v${version}-${platform}-amd64.tar.gz"
+  echo "https://get.helm.sh/helm-v${version}-${platform}.tar.gz"
 }
 
 my_mktemp () {
@@ -69,7 +69,7 @@ install_helm () {
 
 	mkdir -p $bin_install_path
 	curl -sSL $download_url -o "${tempdir}/archive.tar.gz"
-	tar -C "$tempdir" -xzf "${tempdir}/archive.tar.gz"
+	tar -C "$tempdir" -zxf "${tempdir}/archive.tar.gz"
 
 	if [ -f "${tempdir}/${platform}/tiller"]; then
 		mv "${tempdir}/${platform}/tiller" "${bin_install_path}/tiller"
